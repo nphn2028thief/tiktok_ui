@@ -1,0 +1,77 @@
+.wrapper {
+    position: relative;
+    padding: 16px 0;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 1px;
+        // margin-top: 8px;
+        background-color: #e3e3e4;
+        transform: scaleY(0.5);
+    }
+}
+
+.label {
+    padding: 0 8px;
+    margin-bottom: 8px;
+    font-size: 1.4rem;
+    font-weight: 600;
+}
+
+.account-item {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    border-radius: 4px;
+    transition: background-color 200ms ease-in-out 0s;
+
+    &:hover {
+        cursor: pointer;
+        background-color: rgba(22, 24, 35, 0.03);
+    }
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.info-item {
+    flex: 1;
+    margin-left: 12px;
+}
+
+.username {
+    font-size: 1.6rem;
+    color: #161823;
+    line-height: 1;
+}
+
+.check {
+    font-size: 1.4rem;
+    margin-left: 4px;
+    color: #20d5ec;
+}
+
+.name {
+    font-size: 1.2rem;
+    opacity: #161823bf;
+}
+
+.more-btn {
+    cursor: pointer;
+    font-size: 1.4rem;
+    color: #fe2c55;
+    font-weight: 600;
+    padding: 8px 8px 0 8px;
+}
+
+.account-preview {
+    min-height: 171px;
+}

@@ -1,0 +1,62 @@
+.wrapper {
+    width: 320px;
+    padding: 20px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.avatar {
+    cursor: pointer;
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.btn-follow {
+    min-width: 106px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+}
+
+.username {
+    span {
+        font-family: var(--font-family-pro);
+        font-size: 18px;
+    }
+}
+
+.check {
+    font-size: 1.4rem;
+    margin-left: 4px;
+    color: #20d5ec;
+}
+
+.name {
+    font-size: 1.4rem;
+    color: #161823;
+    line-height: 17px;
+}
+
+.analytics {
+    margin-top: 8px;
+}
+
+.value {
+    font-size: 1.7rem;
+    margin-right: 6px;
+}
+
+.label {
+    font-size: 1.7rem;
+    opacity: #161823bf;
+
+    &:not(:last-of-type) {
+        margin-right: 12px;
+    }
+}
