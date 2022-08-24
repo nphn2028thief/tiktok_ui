@@ -5,6 +5,7 @@ import Menu, { MenuItem } from './Menu';
 import { HomeIcon, HomeActiveIcon, FollowIcon, FollowActiveIcon, LiveIcon, LiveActiveIcon } from '~/components/Icons';
 import SuggestedAccounts from '~/components/SuggestedAccounts';
 import * as userService from '~/services/userService';
+import * as meService from '~/services/meService';
 import config from '~/config';
 
 const cx = classNames.bind(styles);
@@ -15,13 +16,19 @@ const PER_PAGE = 5;
 function Sidebar() {
     const [page, setPage] = useState(INIT_PAGE);
     const [suggestedUsers, setSuggestedUsers] = useState([]);
+    const [followedUsers, setFollowedUsers] = useState([]);
 
     useEffect(() => {
         userService
             .getSuggested({ page, perPage: PER_PAGE })
-            .then((data) => {
-                setSuggestedUsers(data);
-            })
+            .then((data) => setSuggestedUsers(data))
+            .catch((err) => console.log(err));
+    }, [page]);
+
+    useEffect(() => {
+        meService
+            .getFollowed({ page })
+            .then((data) => console.log({ data }))
             .catch((err) => console.log(err));
     }, [page]);
 
@@ -40,8 +47,8 @@ function Sidebar() {
                 <MenuItem title="LIVE" to={config.routes.live} icon={<LiveIcon />} activeIcon={<LiveActiveIcon />} />
             </Menu>
 
-            <SuggestedAccounts label="Suggested accounts" data={suggestedUsers} onSeeAll={handleSeeAll} />
-            <SuggestedAccounts label="Following accounts" />
+            <SuggestedAccounts label="Suggested accounts" suggestedData={suggestedUsers} onSeeAll={handleSeeAll} />
+            <SuggestedAccounts label="Following accounts" followedData={followedUsers} isFollowed={true} />
         </aside>
     );
 }
