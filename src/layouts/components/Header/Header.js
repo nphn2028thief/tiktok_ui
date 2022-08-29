@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -17,6 +18,7 @@ import 'tippy.js/dist/tippy.css';
 
 import config from '~/config';
 import Button from '~/components/Button';
+import Modal from '~/components/Modal';
 import styles from './Header.module.scss';
 import images from '~/assets/images';
 import Menu from '~/components/Popper/Menu';
@@ -91,13 +93,24 @@ const USER_MENU = [
 ];
 
 function Header() {
+    /* Biến để kiểm tra nếu user đăng nhập thì true, chưa đăng nhập là false */
     const currentUser = false;
+
+    /* Check Modal */
+    const [modalIsOpen, setIsOpen] = useState(false);
 
     const handleMenuChange = (menuItem) => {
         console.log(menuItem);
     };
 
-    /* Biến để kiểm tra nếu user đăng nhập thì true, chưa đăng nhập là false */
+    /* Modal Function */
+    function openModal() {
+        setIsOpen(true);
+    }
+
+    function closeModal() {
+        setIsOpen(false);
+    }
 
     return (
         <header className={cx('wrapper')}>
@@ -132,6 +145,7 @@ function Header() {
                         </>
                     ) : (
                         <>
+                            <div id="publish-btn"></div>
                             <Button text icon={<FontAwesomeIcon icon={faPlus} />}>
                                 Upload
                             </Button>
@@ -153,6 +167,23 @@ function Header() {
                     </Menu>
                 </div>
             </div>
+
+            {/* Modal */}
+            <button onClick={openModal}>Open Modal</button>
+            <Modal
+                isOpen={modalIsOpen}
+                // onRequestClose={closeModal}
+            >
+                <button onClick={closeModal}>close</button>
+                <div>I am a modal</div>
+                <form>
+                    <input />
+                    <button>tab navigation</button>
+                    <button>stays</button>
+                    <button>inside</button>
+                    <button>the modal</button>
+                </form>
+            </Modal>
         </header>
     );
 }
