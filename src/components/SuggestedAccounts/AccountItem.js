@@ -11,7 +11,7 @@ import Image from '../Image';
 
 const cx = classNames.bind(styles);
 
-function AccountItem({ data, followed }) {
+function AccountItem({ data }) {
     const renderPreview = (props) => {
         return (
             <div className={cx('preview')} tabIndex="-1" {...props}>
@@ -24,13 +24,7 @@ function AccountItem({ data, followed }) {
 
     return (
         <div>
-            <Tippy
-                interactive
-                offset={[-8, 0]}
-                delay={[1000, 0]}
-                placement="bottom-start"
-                render={!followed ? renderPreview : null}
-            >
+            <Tippy interactive offset={[-8, 0]} delay={[1000, 0]} placement="bottom-start" render={renderPreview}>
                 <div className={cx('account-item')}>
                     <Image className={cx('avatar')} src={data.avatar} alt={data.nickname} />
 

@@ -6,22 +6,16 @@ import AccountItem from './AccountItem';
 
 const cx = classNames.bind(styles);
 
-function SuggestedAccounts({ label, suggestedData = [], followedData = [], isFollowed = false, onSeeAll }) {
+function SuggestedAccounts({ label, data = [] }) {
     return (
         <div className={cx('wrapper')}>
             <p className={cx('label')}>{label}</p>
 
-            {isFollowed
-                ? followedData.map((followed) => (
-                      <AccountItem key={followed.id} data={followed} followed={isFollowed} />
-                  ))
-                : suggestedData.map((suggested) => (
-                      <AccountItem key={suggested.id} data={suggested} followed={isFollowed} />
-                  ))}
+            {data.map((suggested) => (
+                <AccountItem key={suggested.id} data={suggested} />
+            ))}
 
-            <p className={cx('more-btn')} onClick={onSeeAll}>
-                See all
-            </p>
+            <p className={cx('more-btn')}>See all</p>
         </div>
     );
 }

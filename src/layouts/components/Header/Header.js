@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames/bind';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -16,6 +16,7 @@ import {
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
 
+import { StoreContext } from '~/store';
 import config from '~/config';
 import Button from '~/components/Button';
 import Modal from '~/components/Modal';
@@ -94,7 +95,8 @@ const USER_MENU = [
 
 function Header() {
     /* Biến để kiểm tra nếu user đăng nhập thì true, chưa đăng nhập là false */
-    const currentUser = false;
+    // const currentUser = false;
+    const [state, dispatch] = useContext(StoreContext);
 
     /* Check Modal */
     const [modalIsOpen, setIsOpen] = useState(false);
@@ -127,7 +129,7 @@ function Header() {
                     Chưa thì sẽ ở layout mặc định ban đầu
                 */}
                 <div className={cx('actions')}>
-                    {currentUser ? (
+                    {state.currentUser ? (
                         <>
                             <Button className={cx('action-upload')} text icon={<FontAwesomeIcon icon={faPlus} />}>
                                 Upload
@@ -149,11 +151,13 @@ function Header() {
                             <Button text icon={<FontAwesomeIcon icon={faPlus} />}>
                                 Upload
                             </Button>
-                            <Button primary>Login</Button>
+                            <Button primary onClick={openModal}>
+                                Login
+                            </Button>
                         </>
                     )}
-                    <Menu items={currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuChange}>
-                        {currentUser ? (
+                    <Menu items={state.currentUser ? USER_MENU : MENU_ITEMS} onChange={handleMenuChange}>
+                        {state.currentUser ? (
                             <Image
                                 className={cx('user-avatar')}
                                 src="https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/4a231a399798a7467045d4f05da7ce3e~c5_100x100.jpeg?x-expires=1660021200&x-signature=SST7kNf12rzyizfqZXyIf%2FfbWyo%3D"
@@ -169,7 +173,7 @@ function Header() {
             </div>
 
             {/* Modal */}
-            <button onClick={openModal}>Open Modal</button>
+            {/* <button>Open Modal</button> */}
             <Modal
                 isOpen={modalIsOpen}
                 // onRequestClose={closeModal}

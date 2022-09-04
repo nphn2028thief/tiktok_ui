@@ -1,0 +1,47 @@
+.wrapper {
+    position: relative;
+    padding-top: 16px;
+    padding-left: 8px;
+
+    &:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 1px;
+        background-color: #e3e3e4;
+        transform: scaleY(0.5);
+    }
+}
+
+.info,
+.developer,
+.term {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 6px;
+    margin-bottom: 16px;
+}
+
+.label {
+    padding: 0;
+    min-width: 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: rgba(22, 24, 35, 0.5019607843);
+
+    &:hover {
+        text-decoration: underline;
+    }
+}
+
+.label + .label {
+    margin: 0;
+}
+
+.copyright {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.2rem;
+    font-weight: 600;
+}

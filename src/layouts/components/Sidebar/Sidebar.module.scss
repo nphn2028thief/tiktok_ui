@@ -5,3 +5,36 @@
 .menu {
     margin-bottom: 8px;
 }
+
+// Non-Login wrapper
+.non-login-wrapper {
+    position: relative;
+    padding: 20px 8px 24px;
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 8px;
+        right: 8px;
+        height: 1px;
+        // margin-top: 8px;
+        background-color: #e3e3e4;
+        transform: scaleY(0.5);
+    }
+}
+
+.non-login-text {
+    color: rgba(22, 24, 35, 0.5);
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+}
+
+.non-login-btn {
+    margin-top: 20px;
+    min-width: 322px;
+    font-family: var(--font-family-pro);
+    font-size: 1.8rem;
+    font-weight: 600;
+    padding: 10px 0;
+}
