@@ -67,7 +67,7 @@ function Sidebar() {
 
             {/* Danh sách tài khoản đề xuất và tài khoản đã theo dõi */}
             <SuggestedAccounts label="Suggested accounts" data={suggestedUsers} onSeeAll={handleSeeAll} />
-            <SuggestedAccounts label="Following accounts" />
+            {state.currentUser && <SuggestedAccounts label="Following accounts" />}
 
             <Discover />
 
